@@ -1,4 +1,4 @@
 CLIENT_ID='11f112e813fe48bab6abca66677d3e1b'
 CLIENT_SECRET='16354f0a5b8e410e908399ab695552b2'
-MAIL_ID='mary.maher.252@gmail.com'
-MAIL_SECRET='0113501338'
+MAIL_ID='snotify.org@gmail.com'
+MAIL_SECRET='snotifygdn1'
