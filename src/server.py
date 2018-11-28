@@ -23,9 +23,10 @@ for i, t in enumerate(results['tracks']['items']):
 @app.route('/',methods=['GET', 'POST'])
 def hello():
   if request.method == 'POST' :
+    mail_id=app.config.get('MAIL_ID')
+    mail_secret=app.config.get('MAIL_SECRET')
     email= request.form['textinput']
-    #print(email)
-    mail(email,top20)
+    mail(mail_id,mail_secret,email,top20)
     return top20
   return render_template('View.html')
 
