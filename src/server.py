@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request,send_file
-
+import mail
 import spotipy
 import spotipy.oauth2 as oauth2
 
@@ -22,6 +22,7 @@ for i, t in enumerate(results['tracks']['items']):
 @app.route('/',methods=['GET', 'POST'])
 def hello():
   if request.method == 'POST' :
+    #mail("mar.mar.1234@hotmail.com",top20)
     return top20
   return render_template('View.html')
 
