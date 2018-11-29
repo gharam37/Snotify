@@ -14,15 +14,18 @@ credentials = oauth2.SpotifyClientCredentials(
 
 token = credentials.get_access_token()
 spotify = spotipy.Spotify(auth=token)
-top20 =''
-results = spotify.search(q='weezer', limit=20)
-for i, t in enumerate(results['tracks']['items']):
-    top20+= ' '+ str(i)+ t['name']
+
 
 
 @app.route('/',methods=['GET', 'POST'])
+
 def hello():
-  if request.method == 'POST' :
+  if request.method == 'POST'  :
+    artist=request.form['text']
+    results = spotify.search(q=artist, limit=20)
+    top20 =''
+    for i, t in enumerate(results['tracks']['items']):
+     top20+= ' '+ str(i)+ t['name']
     mail_id=app.config.get('MAIL_ID')
     mail_secret=app.config.get('MAIL_SECRET')
     email= request.form['textinput']
