@@ -6,6 +6,7 @@ def mail(frommail,fromSecret,tomail,data):
     server.starttls()
     print('here')
     server.login(frommail, fromSecret)
+    #msg=" /n" + data
     server.sendmail(frommail, tomail, data)
     server.quit()
 #mail("mar.mar.1234@hotmail.com","mar.mar.1234@hotmail.com")

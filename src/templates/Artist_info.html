@@ -1,41 +1,37 @@
 <html>
   <head>
     <title>Artist Info</title>
-        <div>
-           <h1>Top 20 Songs for {{artist}} :</h1><hr />
-       </div>
+    <style type="text/css" media="screen">
+      body{
+          
+      }
+      .container{
+          margin-left: 39%;
+          border: 2pt solid black;
+          padding: 3%;
+          background: white;
+      }
+  </style>
     <script>
         var artist = '{{artist}}'
-        var outputFormated = '{{outputFormatted}}'
-        var item = "";
-        for (output in outputFormated) {
-          item+= outputFormated[output];
-          }
-          document.write(item);
+        var output = '{{output}}'
     </script>
+    
   </head>
-  <body>
-    <div>
-    <h1>Artists Related to {{artist}}:</h1><hr />
-    <script>
-      var outputFormated2 = '{{outputFormatted2}}'
-      var item ="";
-      for (output in outputFormated2) {
-          item+= outputFormated2[output];  
-        }
-          document.write(item);
-    </script>
+  <body style="background: #a3a2a2;
+          padding: 2%;
+          margin-left: -1%;
+          margin-right: -1%;
+          display: flex;">
+    <div class="container" style=" margin-left: 39%;
+          border: 2pt solid black;
+          padding: 3%;
+          background: white;">
+        <div>
+    Top 20 Songs for {{artist}} :
+        
     </div>  
-    <!-- <div>
-        <h1>Artists Related to {{artist}}:</h1><hr />
-        <script>
-          var outputFormated2 = '{{outputFormatted2}}'
-          var item = "";
-          for (output in outputFormated2) {
-              item+= outputFormated2[output];  
-            }
-              document.write(item);
-        </script>
-        </div>   -->
+    <hr /><h1>Artists Related to {{ artist }}</h1>
+    </div>
   </body>
 </html>
