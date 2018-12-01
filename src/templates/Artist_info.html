@@ -1,16 +1,41 @@
 <html>
   <head>
     <title>Artist Info</title>
+        <div>
+           <h1>Top 20 Songs for {{artist}} :</h1><hr />
+       </div>
     <script>
         var artist = '{{artist}}'
-        var output = '{{output}}'
+        var outputFormated = '{{outputFormatted}}'
+        var item = "";
+        for (output in outputFormated) {
+          item+= outputFormated[output];
+          }
+          document.write(item);
     </script>
   </head>
   <body>
-     <div>
-    Top 20 Songs for {{artist}} :
-        
+    <div>
+    <h1>Artists Related to {{artist}}:</h1><hr />
+    <script>
+      var outputFormated2 = '{{outputFormatted2}}'
+      var item ="";
+      for (output in outputFormated2) {
+          item+= outputFormated2[output];  
+        }
+          document.write(item);
+    </script>
     </div>  
-    <hr /><h1>Artists Related to {{ artist }}</h1>
+    <!-- <div>
+        <h1>Artists Related to {{artist}}:</h1><hr />
+        <script>
+          var outputFormated2 = '{{outputFormatted2}}'
+          var item = "";
+          for (output in outputFormated2) {
+              item+= outputFormated2[output];  
+            }
+              document.write(item);
+        </script>
+        </div>   -->
   </body>
 </html>

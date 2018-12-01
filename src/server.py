@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,send_file,request
 from mail import mail
 import spotipy
 import sys
+import pprint
 import spotipy.oauth2 as oauth2
 
 
@@ -15,20 +16,68 @@ credentials = oauth2.SpotifyClientCredentials(
 
 token = credentials.get_access_token()
 spotify = spotipy.Spotify(auth=token)
+artist=''
+artist_render=''
+outputFormatted=''
+outputFormatted2=''
+res=''
 
 
+# @app.route('/artist_info',methods=['GET', 'POST'])
 
 @app.route('/',methods=['GET', 'POST'])
 
+# def get_artist(aName):
+#     results = spotify.search(q='artist:' + aName, type='artist')
+#     items = results['artists']['items']
+#     if len(items) > 0:
+#         return items[0]
+#     else:
+#         return None
+# def show_album_tracks(album):
+#     tracks = []
+#     results = spotify.album_tracks(album['id'])
+#     tracks.extend(results['items'])
+#     while results['next']:
+#         results = spotify.next(results)
+#         tracks.extend(results['items'])
+#     for track in tracks:
+#         print('  ', track['name'])
+#         print()
+#         print(track)     
+# def show_artist_albums(id):
+#     albums = []
+#     results = spotify.artist_albums(artist['id'], album_type='album')
+#     albums.extend(results['items'])
+#     while results['next']:
+#       results = spotify.next(results)
+#       albums.extend(results['items'])
+#     print('Total albums:', len(albums))
+#     unique = set()  # skip duplicate albums
+#     for album in albums:
+#         name = album['name'].lower()
+#         if not name in unique:  
+#             print(name)
+#             unique.add(name)
+#             show_album_tracks(album)
+# def show_artist(artist):
+#     print('====', artist['name'], '====')
+#     print('Popularity: ', artist['popularity'])
+#     if len(artist['genres']) > 0:
+#         print('Genres: ', ','.join(artist['genres']))
+
 def hello():
   if request.method == 'POST'  :
-    artist=request.form['text']
+    global artist
+    artist=request.form["text"]
     results = spotify.search(q=artist.encode("utf-8"), limit=20)
     top20 =''
-    outputFormatted='<h1>Top 20 Songs for '+artist.capitalize()+'</h1><hr />'
+    global outputFormatted
+    outputFormatted=''
     for i, t in enumerate(results['tracks']['items']):
      top20+= ' '+ str(i)+ t['name']
-     outputFormatted+=str(i)+') '+t['name']+'<br />'
+     outputFormatted+=str(i)+') '+t['name'] 
+    
     # mail_id=app.config.get('MAIL_ID')
     # mail_secret=app.config.get('MAIL_SECRET')
     # email= request.form['textinput']
@@ -39,14 +88,23 @@ def hello():
       uri = results['artists']['items'][0]['uri']
 
       results = spotify.artist_related_artists(uri)
-      outputFormatted+='<hr /><h1>Artists Related to '+artist+'</h1>'
+      global outputFormatted2
       for i,relatedArtist in enumerate(results['artists']):
-       outputFormatted+=str(i)+') '+relatedArtist['name']+'<br />'
+       outputFormatted2+=str(i)+') '+relatedArtist['name']
     except:
       print("usage show_related.py [artist-name]")
-    return outputFormatted
-  return render_template('View.html')
+    
+    # spotify.trace = False
+    # name = request.form["text"]
+    # artist = get_artist(name)
+    # show_artist(artist)
+    # show_artist_albums(artist)
+
+    return render_template('Artist_info.html',artist=artist,outputFormatted=outputFormatted,outputFormatted2=outputFormatted2)    
+  else:
+    return render_template('view.html')
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", debug=True) 
+   
