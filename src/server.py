@@ -3,7 +3,7 @@ from mail import mail
 import spotipy
 import sys
 import spotipy.oauth2 as oauth2
-
+import base64
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_object('config')
@@ -23,7 +23,7 @@ spotify = spotipy.Spotify(auth=token)
 def hello():
   if request.method == 'POST'  :
     artist=request.form['text']
-    results = spotify.search(q=artist.encode("utf-8"), limit=20)
+    results = spotify.search(q=artist.encode().decode('ascii'), limit=20)
     top20 =''
     mailbody=''
     mailbody='Top 20 Songs for '+artist.capitalize()+ '\n'
@@ -34,27 +34,28 @@ def hello():
      mailbody+=str(i)+') '+t['name']+ '\n'
      outputFormatted+=str(i)+') '+t['name']+'<br />'
     
-    results = spotify.search(q='artist:' + artist, type='artist')
+    results = spotify.search(q='artist:' + artist.encode().decode('ascii'), type='artist')
     try:
       name = results['artists']['items'][0]['name']
       uri = results['artists']['items'][0]['uri']
 
       results = spotify.artist_related_artists(uri)
       outputFormatted+='<hr /><h1>Artists Related to '+artist+'</h1>'
-      mailbody+='Artists Related to '+artist+ "\n"
+      mailbody+='Artists Related to '+artist.capitalize()+"\n"
       for i,relatedArtist in enumerate(results['artists']):
        outputFormatted+=str(i)+') '+relatedArtist['name']+'<br />'
        mailbody+=str(i)+') '+relatedArtist['name']+ '\n'
     except:
       print("usage show_related.py [artist-name]")
+    mailbody=mailbody.encode('utf-8')
     outputFormatted+='<div />'
     mail_id=app.config.get('MAIL_ID')
     mail_secret=app.config.get('MAIL_SECRET')
     email= request.form['textinput']
+    
     mail(mail_id,mail_secret,email,mailbody)
     return outputFormatted
   return render_template('View.html')
-
-
+  
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
