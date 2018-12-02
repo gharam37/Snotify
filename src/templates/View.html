@@ -1,7 +1,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Welcome to Snotify Web !!</title>
+    <script>
+            function close_window() {
+               if (confirm("Close Snotify?")) {
+                   window.open('','_self').close()
+                }
+            }
+            function goToGithub() {
+                window.open("https://github.com/gharam37/Snotify");
+            }
+    </script>
     <style type="text/css" media="screen">
             body{
                 background: #a3a2a2;
@@ -22,22 +33,38 @@
             display: block;
             max-width: 40%;
         }
-        
-    </style>
+        .btn{
+            background-color:#2fb566;
+            height: 25px;
+            width:50px;
+            border-radius:10px; 
+            border-color:#ffff; 
+            border-bottom-color:#ffff; 
+            
+        }
+        .fa-close {
+             color: white;
+        }
+        .fa-close:hover {
+             color: #2fd566;
+        }
+    </style>    
 </head>
 <body>
     <div class="container" style type="text/css">
-        
+        <button class="btn" href="#" onclick="close_window();return false;" ><i class="fa fa-close" style="font-size:15px"></i></button>
         <div class="form" id="d1" link rel="stylesheet" href="styles.css"></div>
             <img class='img' style="margin-left:35%;" src="../static/logo.png" alt="Snotify!!" height="64px" width="64px">
             <br />
             <form method=POST enctype=multipart/form-data action="{{ url_for('hello') }}">
-                <p id="aName">Artist Name:<input  id='aName'  name="text"><br /></p>
+                <p id="aName">Artist Name:<input style="border-radius:5px;" placeholder="Drake"  name="text"><br /></p>
                 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Email:<input style="margin-left:0.5%;" name="textinput"> <br />
+                Email:<input style="margin-left:0.5%; border-radius:5px; " name="textinput" placeholder="example@domain.com"> <br />
                 <br/>
-                <input type="submit" style="margin-left:40%; margin-block-end:40.5%; align-items: center; scale: 0%" value="Snotify">
+                <input type="submit" style=" background-color:#2fb566; width:80px; height:30px; color: white; margin-left:40%; margin-block-end:40.5%; align-items: center; scale: 0%; border-radius:5px; border-color:#ffffff; border-right:#ffff; border-bottom-color:#ffffff" value="Snotify Me !!">
             </form>
+            <br /><br />
+            <button  style="margin-left:30%; margin-bottom: 50%; background-color: white; width:120px; height:30px; border-radius:5px; border-color: black;" href="#"onclick="goToGithub();return false;"><b>Source Code&nbsp;&nbsp;</b><i class="fa fa-github" style="font-size:18px"></i></button>
         </div>
     </div>
 

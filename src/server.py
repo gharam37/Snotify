@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request,send_file,request
 from mail import mail
 import spotipy
-import sys
 import spotipy.oauth2 as oauth2
-import base64
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_object('config')
