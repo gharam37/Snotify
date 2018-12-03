@@ -32,6 +32,4 @@
 
 ## **Remember:** Keep the Docker client running on your machine at all times when using Snotify Web
 
-#
-
 - **Spotipy Repo :** https://github.com/plamere/spotipy
