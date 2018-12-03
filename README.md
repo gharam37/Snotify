@@ -1,3 +1,6 @@
+
+(https://drive.google.com/open?id=1-ji96SVf5YnNcRKkMr7TUm-PcPjN-rFR)
+
 # Snotify Web
 
 ## Once you clone the repo
@@ -32,4 +35,4 @@
 
 ## **Remember:** Keep the Docker client running on your machine at all times when using Snotify Web
 
-- **Spotipy Repo :** https://github.com/plamere/spotipy
+- **Spotipy (A Python API for Spotify) :** https://github.com/plamere/spotipy
