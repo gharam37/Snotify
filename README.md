@@ -1,4 +1,4 @@
-# Snotify
+# Snotify Web
 
 ## Once you clone the repo
 
