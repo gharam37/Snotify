@@ -16,7 +16,7 @@
 
 ### **Note:** We're using *Gmail* as a mailing server in the scope of this project but your free to use the mailing service of your choice as long as you adjust its settings in the _**mail.py**_ and _**config.py**_ files
 
-- To the docker image get up and running, open up your favorite terminal client and navigate to the 'Snotify' directory and run the following commands as administrator (Windows) / sudo (macOS / Linux):
+- To get the docker image up and running, open up your favorite terminal client and navigate to the 'Snotify' directory and run the following commands as administrator (Windows) / sudo (macOS / Linux):
 
     ```docker build .```
 
@@ -26,7 +26,7 @@
 
     ```docker run snotify_web```
 
-- To stop the docker image, open up your favorite terminal client and enter the following:
+- To stop the docker image from running, open up your favorite terminal client and enter the following:
 
     ```docker-compose down```
 
