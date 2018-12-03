@@ -30,4 +30,4 @@
 
     ```docker-compose down```
 
-### **Remember:** Keep Docker clientrunning on your machine at all times in order to avoid encountering errors
+### **Remember:** Keep Docker client running on your machine at all times when using Snotify Web
