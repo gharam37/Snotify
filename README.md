@@ -1,5 +1,5 @@
-
-(https://drive.google.com/open?id=1-ji96SVf5YnNcRKkMr7TUm-PcPjN-rFR)
+![Logo]
+(../master/src/static/log.png)
 
 # Snotify Web
 
