@@ -1,5 +1,5 @@
 ![Logo]
-(/src/static/logo.png)
+(/master/src/static/logo.png)
 
 # Snotify Web
 
